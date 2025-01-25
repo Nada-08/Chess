@@ -16,6 +16,35 @@ This project is a Chess game implementation with a focus on logic and UI separat
 - Represents movement directions (e.g., north, south, east, west) with `RowDelta` and `ColumnDelta` attributes.
 - Supports addition (`+`) and scalar multiplication (`*`) for combining and scaling directions.
 
+### 4. PieceType Enum
+Represents the types of chess pieces: `Bishop`, `King`, `Knight`, `Pawn`, `Queen`, and `Rook`.
+
+### 5. Piece Class (Abstract)
+- Defines the base structure for all chess pieces.
+- Includes abstract methods:
+  - `Type`: Returns the `PieceType`.
+  - `Color`: Returns the `Player` (White or Black).
+  - `Copy`: Returns a deep copy of the piece.
+- Includes a `HasMoved` property (default: `false`) to track if a piece has moved, which is crucial for special moves like castling.
+
+### 6. Piece Subclasses
+- **King, Knight, Bishop, Pawn, Queen, Rook**: Each inherits from `Piece` and implements the required methods to define their behavior.
+
+### 7. Board Class
+- Manages the 8x8 grid of pieces.
+- Key functionalities:
+  - `GetPiece(Position)`: Retrieves a piece at a specific position.
+  - `AddStartPieces()`: Initializes the board with pieces in their starting positions.
+  - `IsInside(Position)`: Checks if a position is within the board boundaries.
+  - `IsEmpty(Position)`: Checks if a position is unoccupied.
+
+### 8. GameState Class
+- Tracks the current state of the game.
+- Attributes:
+  - `Board`: Represents the current board configuration.
+  - `CurrentPlayer`: Tracks whose turn it is (White or Black).
+- Acts as the bridge between the game logic (`ChessLogic`) and the user interface (`ChessUI`).
+
 ## ChessUI
 - Contains assets (images) for the chessboard and pieces.
 - Designed to visually represent the game state based on the logic provided by `ChessLogic`.
