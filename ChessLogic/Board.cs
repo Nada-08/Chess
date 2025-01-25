@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ChessLogic
+﻿namespace ChessLogic
 {
     public class Board
     {
@@ -22,7 +16,7 @@ namespace ChessLogic
             set { this[pos.Row, pos.Column] = value;}
         }
 
-        public static Board Intiial()
+        public static Board Initial()
         {
             Board board = new Board();
             board.AddStartPieces();
@@ -59,6 +53,11 @@ namespace ChessLogic
         public static bool IsInside(Position pos)
         {
             return pos.Row >= 0 && pos.Row < 8 && pos.Column >= 0 && pos.Column < 8;
+        }
+
+        public bool IsEmpty(Position pos)
+        {
+            return this[pos] == null;
         }
     }
 }

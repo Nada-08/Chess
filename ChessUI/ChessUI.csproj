@@ -33,6 +33,7 @@
 
   <ItemGroup>
     <Resource Include="Assets\BishopB.png" />
+    <Resource Include="Assets\BishopW.png" />
     <Resource Include="Assets\Board.png" />
     <Resource Include="Assets\CursorB.cur" />
     <Resource Include="Assets\CursorW.cur" />

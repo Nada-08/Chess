@@ -46,8 +46,25 @@ Represents the types of chess pieces: `Bishop`, `King`, `Knight`, `Pawn`, `Queen
 - Acts as the bridge between the game logic (`ChessLogic`) and the user interface (`ChessUI`).
 
 ## ChessUI
-- Contains assets (images) for the chessboard and pieces.
-- Designed to visually represent the game state based on the logic provided by `ChessLogic`.
+
+### 1. MainWindow Class
+- Manages the graphical representation of the chessboard and pieces.
+- Attributes:
+  - `pieceImages`: A 2D array of `Image` controls to display pieces on the board.
+  - `gameState`: Tracks the current state of the game.
+- Key Functionalities:
+  - `InitializeBoard()`: Initializes the `pieceImages` array and sets up the `PieceGrid` (8x8 UniformGrid).
+  - `DrawBoard(Board board)`: Updates the UI to reflect the current state of the board by rendering piece images.
+
+### 2. Images Class
+- Handles the loading and retrieval of piece images.
+- Attributes:
+  - `whiteSources`: A dictionary mapping `PieceType` to `ImageSource` for white pieces.
+  - `blackSources`: A dictionary mapping `PieceType` to `ImageSource` for black pieces.
+- Key Functionalities:
+  - `LoadImage(string path)`: Loads an image from the specified file path.
+  - `GetImage(Piece piece)`: Returns the appropriate image for a given piece (or `null` if the piece is `null`).
+  - `GetImage(Player player, PieceType type)`: Returns the image for a specific piece type and color.
 
 ## How to Run
 1. Clone the repository.
