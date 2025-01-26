@@ -26,9 +26,16 @@ Represents the types of chess pieces: `Bishop`, `King`, `Knight`, `Pawn`, `Queen
   - `Color`: Returns the `Player` (White or Black).
   - `Copy`: Returns a deep copy of the piece.
 - Includes a `HasMoved` property (default: `false`) to track if a piece has moved, which is crucial for special moves like castling.
+-Provides methods for move generation:
+  - GetMoves(Position from, Board board): Returns all valid moves for the piece from a given position.
+  - MovePositionsInDir(Position from, Board board, Direction dir): Yields positions in a specific direction until an obstruction is encountered.
+  - MovePositionsInDirs(Position from, Board board, Direction[] dirs): Combines positions from multiple directions.
 
 ### 6. Piece Subclasses
-- **King, Knight, Bishop, Pawn, Queen, Rook**: Each inherits from `Piece` and implements the required methods to define their behavior.
+- Bishop: Moves diagonally in all four directions.
+- Queen: Combines the moves of a rook and bishop (all eight directions).
+- Rook: Moves horizontally and vertically in all four directions.
+- King, Knight, Pawn: Each implements its unique movement logic.
 
 ### 7. Board Class
 - Manages the 8x8 grid of pieces.
@@ -44,6 +51,33 @@ Represents the types of chess pieces: `Bishop`, `King`, `Knight`, `Pawn`, `Queen
   - `Board`: Represents the current board configuration.
   - `CurrentPlayer`: Tracks whose turn it is (White or Black).
 - Acts as the bridge between the game logic (`ChessLogic`) and the user interface (`ChessUI`).
+
+
+### 9. MoveType Enum 
+- Represents the types of moves in chess:
+  - `Normal`: Standard piece movement.
+  - `CastleKS`: Kingside castling.
+  - `CastleQS`: Queenside castling.
+  - `DoublePawn`: Pawn moving two squares forward.
+  - `EnPassant`: Special pawn capture.
+  - `PawnPromotion`: Pawn reaching the eighth rank and promoting.
+
+### 10. Move Class (Abstract)
+- Defines the base structure for all chess moves.
+- Includes abstract properties:
+  - `Type`: Returns the `MoveType`.
+  - `FromPos`: The starting position of the move.
+  - `ToPos`: The destination position of the move.
+- Includes an abstract method:
+  - `Execute(Board board)`: Executes the move on the board.
+
+### 11. NormalMove Class
+- Represents a standard move in chess.
+- Inherits from `Move` and implements:
+  - `Type`: Returns `MoveType.Normal`.
+  - `FromPos` and `ToPos`: The starting and destination positions.
+  - `Execute(Board board)`: Moves the piece from `FromPos` to `ToPos` and updates its state.
+
 
 ## ChessUI
 
