@@ -2,11 +2,11 @@
 {
     public enum MoveType
     {
-        Normal, 
-        CastleKS, 
-        CastleQS, 
-        DoublePawn,
-        EnPassant,
-        PawnPromotion 
+        Normal, // standard piece movement 
+        CastleKS, // kingside castling
+        CastleQS, // queenside castling
+        DoublePawn, // pawn moving two squares forward
+        EnPassant, // special pawn capture
+        PawnPromotion  // pawn reaching the eighth rank and promoting
     }
 }

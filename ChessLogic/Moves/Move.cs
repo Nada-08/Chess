@@ -6,6 +6,6 @@
         public abstract Position FromPos { get; }
         public abstract Position ToPos { get; }
         
-        public abstract void Executre(Board board); // applying command pattern
+        public abstract void Execute(Board board); // applying command pattern
     }
 }

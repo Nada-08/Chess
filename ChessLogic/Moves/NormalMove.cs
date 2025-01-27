@@ -18,7 +18,7 @@ namespace ChessLogic
             ToPos = to;
         }
 
-        public override void Executre(Board board)
+        public override void Execute(Board board)
         {
             Piece piece = board[FromPos];
             board[ToPos] = piece;

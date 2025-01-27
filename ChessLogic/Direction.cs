@@ -25,7 +25,7 @@
             return new Direction(dir1.RowDelta + dir2.RowDelta, dir1.ColumnDelta + dir2.ColumnDelta);
         }
 
-        public static Direction operator &(int scalar, Direction dir)
+        public static Direction operator *(int scalar, Direction dir)
         {
             return new Direction(scalar * dir.RowDelta, scalar * dir.ColumnDelta);
         }
