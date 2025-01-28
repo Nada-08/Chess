@@ -140,7 +140,6 @@ namespace ChessUI
             }
         }
 
-
         private void SetCursor(Player player)
         {
             if (player == Player.White)

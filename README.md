@@ -28,10 +28,8 @@ This project is a Chess game implementation with a focus on logic and UI separat
   - `Color`: Returns the `Player` (White or Black).
   - `Copy`: Returns a deep copy of the piece.
 - Includes a `HasMoved` property (default: `false`) to track if a piece has moved, which is crucial for special moves like castling.
-- Provides methods for move generation:
-  - `GetMoves(Position from, Board board)`: Returns all valid moves for the piece from a given position.
-  - `MovePositionsInDir(Position from, Board board, Direction dir)`: Yields positions in a specific direction until an obstruction is encountered.
-  - `MovePositionsInDirs(Position from, Board board, Direction[] dirs)`: Combines positions from multiple directions.
+- **New Method:**
+  - `virtual bool CanCaptureOpponentKing(Position from, Board board)`: Determines if a piece can capture the opponent's king from a given position. This method is overridden in the `Pawn` and `King` classes for optimized behavior.
 
 ### 6. Piece Subclasses
 #### **Pawn Class**
@@ -43,6 +41,7 @@ This project is a Chess game implementation with a focus on logic and UI separat
   - `ForwardMoves(Position from, Board board)`: Generates moves for the first forward position and, if applicable, the next forward position if the pawn hasn't moved.
   - `DiagonalMoves(Position from, Board board)`: Generates moves for diagonal captures.
   - Overrides `GetMoves(Position from, Board board)` to combine `ForwardMoves` and `DiagonalMoves`.
+  - Overrides `CanCaptureOpponentKing(Position from, Board board)` to focus only on diagonal positions for potential captures.
 
 #### **Knight Class**
 - **Functions:**
@@ -56,6 +55,7 @@ This project is a Chess game implementation with a focus on logic and UI separat
 - **Functions:**
   - `MovePositions(Position from, Board board)`: Validates positions in all directions (inside board, empty, or containing opponent's piece).
   - Overrides `GetMoves(Position from, Board board)` to create `NormalMove` objects from valid positions.
+  - Overrides `CanCaptureOpponentKing(Position from, Board board)` to include castling logic (to be expanded later).
 
 #### **Other Subclasses**
 - **Bishop**: Moves diagonally in all four directions.
@@ -69,26 +69,21 @@ This project is a Chess game implementation with a focus on logic and UI separat
   - `AddStartPieces()`: Initializes the board with pieces in their starting positions.
   - `IsInside(Position)`: Checks if a position is within the board boundaries.
   - `IsEmpty(Position)`: Checks if a position is unoccupied.
+  - `IEnumerable<Position> PiecePositions()`: Returns all positions on the board that contain a piece.
+  - `IEnumerable<Position> PiecePositionsFor(Player player)`: Filters positions from `PiecePositions` to return only those belonging to a specified player.
+  - `Board Copy()`: Creates and returns a deep copy of the board.
+  - `bool IsInCheck(Player player)`: Determines if a player's king is in check by checking if any opponent piece can capture the king.
 
 ### 8. GameState Class
 - Tracks the current state of the game.
 - **Attributes:**
   - `Board`: Represents the current board configuration.
   - `CurrentPlayer`: Tracks whose turn it is (White or Black).
-- **Functions:**
-  - `LegalMovesForPiece(Position pos)`: Returns all legal moves for a piece at a given position, ensuring it belongs to the current player.
+- **Key Functions:**
+  - `LegalMovesForPiece(Position pos)`: Modified to filter all valid moves and retain only the legal ones using the `IsLegal` method of `Move`.
   - `MakeMove(Move move)`: Executes the move and switches the turn to the opponent.
 
-### 9. MoveType Enum
-- Represents the types of moves in chess:
-  - `Normal`: Standard piece movement.
-  - `CastleKS`: Kingside castling.
-  - `CastleQS`: Queenside castling.
-  - `DoublePawn`: Pawn moving two squares forward.
-  - `EnPassant`: Special pawn capture.
-  - `PawnPromotion`: Pawn reaching the eighth rank and promoting.
-
-### 10. Move Class (Abstract)
+### 9. Move Class (Abstract)
 - Defines the base structure for all chess moves.
 - **Abstract Properties:**
   - `Type`: Returns the `MoveType`.
@@ -96,8 +91,10 @@ This project is a Chess game implementation with a focus on logic and UI separat
   - `ToPos`: The destination position of the move.
 - **Abstract Method:**
   - `Execute(Board board)`: Executes the move on the board.
+- **Virtual Method:**
+  - `virtual bool IsLegal(Board board)`: Checks if the move is legal by copying the board, executing the move on the copy, and verifying the result.
 
-### 11. NormalMove Class
+### 10. NormalMove Class
 - Represents a standard move in chess.
 - Inherits from `Move` and implements:
   - `Type`: Returns `MoveType.Normal`.
@@ -108,32 +105,9 @@ This project is a Chess game implementation with a focus on logic and UI separat
 
 ## ChessUI
 
-### 1. MainWindow Class
+### MainWindow Class
 - Manages the graphical representation of the chessboard and pieces.
-- **Attributes:**
-  - `pieceImages`: A 2D array of `Image` controls to display pieces on the board.
-  - `highlights`: A 2D array of `Rectangle` for highlighting valid moves.
-  - `moveCache`: A dictionary to store positions and their corresponding moves.
-  - `selectedPos`: Tracks the currently selected position (initialized as `null`).
-  - `gameState`: Tracks the current state of the game.
-- **Key Functionalities:**
-  - `InitializeBoard()`: Initializes the `pieceImages` and `highlights` arrays and sets up the `PieceGrid` (8x8 UniformGrid).
-  - `DrawBoard(Board board)`: Updates the UI to reflect the current state of the board by rendering piece images.
-  - `BoardGrid_MouseDown(object sender, MouseButtonEventArgs e)`: Handles board clicks to select and move pieces based on `selectedPos`.
-  - `CacheMoves(IEnumerable<Move> moves)`: Stores valid moves in `moveCache`.
-  - `ShowHighlights()`: Highlights all valid moves for a selected piece.
-  - `HideHighlights()`: Clears all move highlights.
-  - `SetCursor(Player player)`: Sets the cursor to indicate the current player's turn.
-
-### 2. Images Class
-- Handles the loading and retrieval of piece images.
-- **Attributes:**
-  - `whiteSources`: A dictionary mapping `PieceType` to `ImageSource` for white pieces.
-  - `blackSources`: A dictionary mapping `PieceType` to `ImageSource` for black pieces.
-- **Key Functionalities:**
-  - `LoadImage(string path)`: Loads an image from the specified file path.
-  - `GetImage(Piece piece)`: Returns the appropriate image for a given piece (or `null` if the piece is `null`).
-  - `GetImage(Player player, PieceType type)`: Returns the image for a specific piece type and color.
+- Handles UI interactions for piece selection, move highlighting, and move execution.
 
 ---
 
