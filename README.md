@@ -112,10 +112,18 @@ This project is a Chess game implementation with a focus on logic and UI separat
 - Manages the graphical representation of the chessboard and pieces.
 - **Attributes:**
   - `pieceImages`: A 2D array of `Image` controls to display pieces on the board.
+  - `highlights`: A 2D array of `Rectangle` for highlighting valid moves.
+  - `moveCache`: A dictionary to store positions and their corresponding moves.
+  - `selectedPos`: Tracks the currently selected position (initialized as `null`).
   - `gameState`: Tracks the current state of the game.
 - **Key Functionalities:**
-  - `InitializeBoard()`: Initializes the `pieceImages` array and sets up the `PieceGrid` (8x8 UniformGrid).
+  - `InitializeBoard()`: Initializes the `pieceImages` and `highlights` arrays and sets up the `PieceGrid` (8x8 UniformGrid).
   - `DrawBoard(Board board)`: Updates the UI to reflect the current state of the board by rendering piece images.
+  - `BoardGrid_MouseDown(object sender, MouseButtonEventArgs e)`: Handles board clicks to select and move pieces based on `selectedPos`.
+  - `CacheMoves(IEnumerable<Move> moves)`: Stores valid moves in `moveCache`.
+  - `ShowHighlights()`: Highlights all valid moves for a selected piece.
+  - `HideHighlights()`: Clears all move highlights.
+  - `SetCursor(Player player)`: Sets the cursor to indicate the current player's turn.
 
 ### 2. Images Class
 - Handles the loading and retrieval of piece images.
