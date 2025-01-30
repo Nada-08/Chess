@@ -38,13 +38,16 @@
                     Content="RESTART"
                     Style="{StaticResource ButtonStyle}"
                     Width="80"
-                    Height="30"/>
+                    Height="30"
+                    Click="Restart_Click"/>
             
             <Button Grid.Row="2"
-        Content="RESTART"
-        Style="{StaticResource ButtonStyle}"
-        Width="80"
-        Height="30"/>
+                    Grid.Column="1"
+                    Content="EXIT"
+                    Style="{StaticResource ButtonStyle}"
+                    Width="80"
+                    Height="30"
+                    Click="Exit_Click"/>
             
         </Grid>        
     </Border>
