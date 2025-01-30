@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "G:\\college\\Chess\\Chess\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AD891AEE-4FEC-42B3-9921-CAF85F79E862}|ChessUI\\ChessUI.csproj|g:\\college\\chess\\chess\\chessui\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AD891AEE-4FEC-42B3-9921-CAF85F79E862}|ChessUI\\ChessUI.csproj|solutionrelative:chessui\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AD891AEE-4FEC-42B3-9921-CAF85F79E862}|ChessUI\\ChessUI.csproj|g:\\college\\chess\\chess\\chessui\\chesscursor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AD891AEE-4FEC-42B3-9921-CAF85F79E862}|ChessUI\\ChessUI.csproj|solutionrelative:chessui\\chesscursor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AD891AEE-4FEC-42B3-9921-CAF85F79E862}|ChessUI\\ChessUI.csproj|g:\\college\\chess\\chess\\chessui\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{AD891AEE-4FEC-42B3-9921-CAF85F79E862}|ChessUI\\ChessUI.csproj|solutionrelative:chessui\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{F822D029-42C4-4E4D-9427-D7E3B0402C78}|ChessLogic\\ChessLogic.csproj|g:\\college\\chess\\chess\\chesslogic\\gamestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F822D029-42C4-4E4D-9427-D7E3B0402C78}|ChessLogic\\ChessLogic.csproj|solutionrelative:chesslogic\\gamestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,40 +38,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ChessCursor.cs",
-              "DocumentMoniker": "G:\\college\\Chess\\Chess\\ChessUI\\ChessCursor.cs",
-              "RelativeDocumentMoniker": "ChessUI\\ChessCursor.cs",
-              "ToolTip": "G:\\college\\Chess\\Chess\\ChessUI\\ChessCursor.cs*",
-              "RelativeToolTip": "ChessUI\\ChessCursor.cs*",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAABSAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-28T00:03:32.785Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "G:\\college\\Chess\\Chess\\ChessUI\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "ChessUI\\MainWindow.xaml.cs",
-              "ToolTip": "G:\\college\\Chess\\Chess\\ChessUI\\MainWindow.xaml.cs*",
-              "RelativeToolTip": "ChessUI\\MainWindow.xaml.cs*",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAvAAAA",
+              "Title": "GameState.cs",
+              "DocumentMoniker": "G:\\college\\Chess\\Chess\\ChessLogic\\GameState.cs",
+              "RelativeDocumentMoniker": "ChessLogic\\GameState.cs",
+              "ToolTip": "G:\\college\\Chess\\Chess\\ChessLogic\\GameState.cs",
+              "RelativeToolTip": "ChessLogic\\GameState.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAiwDYAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T23:39:53.112Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "G:\\college\\Chess\\Chess\\ChessUI\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "ChessUI\\MainWindow.xaml",
-              "ToolTip": "G:\\college\\Chess\\Chess\\ChessUI\\MainWindow.xaml",
-              "RelativeToolTip": "ChessUI\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-27T23:35:01.553Z",
+              "WhenOpened": "2025-01-28T15:18:48.369Z",
               "EditorCaption": ""
             }
           ]
